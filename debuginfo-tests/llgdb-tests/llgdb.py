@@ -34,11 +34,11 @@ except ImportError:
                 except ImportError:
                     pass
                 else:
-                    print 'imported lldb from: "%s"' % (lldb_python_dir)
+                    print('imported lldb from: "%s"' % (lldb_python_dir))
                     success = True
                     break
     if not success:
-        print "error: couldn't locate the 'lldb' module, please set PYTHONPATH correctly"
+        print("error: couldn't locate the 'lldb' module, please set PYTHONPATH correctly")
         sys.exit(1)
 # ----------------------------------------------------------------------
 

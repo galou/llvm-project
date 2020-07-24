@@ -15,7 +15,7 @@ def host_to_device_path(path):
 
 def adb(args, attempts = 1):
     if verbose:
-        print args
+        print(args)
     tmpname = tempfile.mktemp()
     out = open(tmpname, 'w')
     ret = 255
@@ -25,11 +25,11 @@ def adb(args, attempts = 1):
       if attempts != 0:
         ret = 5
     if ret != 0:
-      print "adb command failed", args
-      print tmpname
+      print("adb command failed", args)
+      print(tmpname)
       out.close()
       out = open(tmpname, 'r')
-      print out.read()
+      print(out.read())
     out.close()
     os.unlink(tmpname)
     return ret

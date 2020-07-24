@@ -22,6 +22,8 @@ Compilation database setup:
 http://clang.llvm.org/docs/HowToSetupToolingForLLVM.html
 """
 
+from __future__ import print_function
+
 import argparse
 import json
 import multiprocessing
@@ -39,7 +41,7 @@ def find_compilation_database(path):
   result = './'
   while not os.path.isfile(os.path.join(result, path)):
     if os.path.realpath(result) == '/':
-      print 'Error: could not find compilation database.'
+      print('Error: could not find compilation database.', file=sys.stderr)
       sys.exit(1)
     result += '../'
   return os.path.realpath(result)
@@ -49,7 +51,7 @@ def MergeSymbols(directory, args):
   """Merge all symbol files (yaml) in a given directory into a single file."""
   invocation = [args.binary, '-merge-dir='+directory, args.saving_path]
   subprocess.call(invocation)
-  print 'Merge is finished. Saving results in ' + args.saving_path
+  print('Merge is finished. Saving results in ' + args.saving_path)
 
 
 def run_find_all_symbols(args, tmpdir, build_path, queue):
@@ -118,7 +120,7 @@ def main():
   except KeyboardInterrupt:
     # This is a sad hack. Unfortunately subprocess goes
     # bonkers with ctrl-c and we start forking merrily.
-    print '\nCtrl-C detected, goodbye.'
+    print('\nCtrl-C detected, goodbye.')
     os.kill(0, 9)
 
 

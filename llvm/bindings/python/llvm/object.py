@@ -57,22 +57,22 @@ Here are some examples on how to perform iteration:
     # This is NOT OK. You perform a lookup after the object has expired.
     symbols = list(obj.get_symbols())
     for symbol in symbols:
-        print symbol.name # This raises because the object has expired.
+        print(symbol.name) # This raises because the object has expired.
 
     # In this example, we mix a working and failing scenario.
     symbols = []
     for symbol in obj.get_symbols():
         symbols.append(symbol)
-        print symbol.name
+        print(symbol.name)
 
     for symbol in symbols:
-        print symbol.name # OK
+        print(symbol.name) # OK
         print symbol.address # NOT OK. We didn't look up this property before.
 
     # Cache everything up front.
     symbols = list(obj.get_symbols(cache=True))
     for symbol in symbols:
-        print symbol.name # OK
+        print(symbol.name) # OK
 
 """
 

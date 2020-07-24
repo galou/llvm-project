@@ -11,6 +11,8 @@
 # uninstrumented, thus allowing the instrumentation pass to treat calls to those
 # functions correctly.
 
+from __future__ import print_function
+
 import os
 import subprocess
 import sys
@@ -86,10 +88,10 @@ for l in libs:
   if os.path.exists(l):
     functions += defined_function_list(l)
   else:
-    print >> sys.stderr, 'warning: library %s not found' % l
+    print('warning: library %s not found' % l, file=sys.stderr)
 
 functions = list(set(functions))
 functions.sort()
 
 for f in functions:
-  print 'fun:%s=uninstrumented' % f
+  print('fun:%s=uninstrumented' % f)

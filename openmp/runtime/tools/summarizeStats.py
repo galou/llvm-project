@@ -143,7 +143,7 @@ def readFile(fname):
             res["counters"] = readCounters(f)
             return res
     except (OSError, IOError):
-        print "Cannot open " + fname
+        print("Cannot open " + fname)
         return None
 
 def usefulValues(l):
@@ -235,7 +235,7 @@ def compPie(data):
             compKeys[key] = data[key]
         else:
             nonCompKeys[key] = data[key]
-    print "comp keys:", compKeys, "\n\n non comp keys:", nonCompKeys
+    print("comp keys:", compKeys, "\n\n non comp keys:", nonCompKeys)
     return [compKeys, nonCompKeys]
 
 def drawMainPie(data, filebase, colors):
@@ -301,7 +301,7 @@ def main():
                 """radar Charts finish here"""
                 plt.savefig(filebase+"_"+s+"_"+chartType, bbox_inches='tight')
             elif s == 'timers':
-                print "overheads in "+filebase
+                print("overheads in " + filebase)
                 numThreads = tmp[s]['SampleCount']['Total_OMP_parallel']
                 for key in data.keys():
                     if key[0:5] == 'Total':
